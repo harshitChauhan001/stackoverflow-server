@@ -1,12 +1,15 @@
-import express from 'express'
+const express = require("express");
 
-import { AskQuestion, getAllQuestions, deleteQuestion } from '../controllers/Questions.js'
+const {
+  AskQuestion,
+  getAllQuestions,
+  deleteQuestion,
+} = require("../controllers/Questions.js");
 
+const app = express();
 
-const router = express.Router()
+app.post("/Ask", AskQuestion);
+app.get("/get", getAllQuestions);
+app.delete("/delete/:id", deleteQuestion);
 
-router.post('/Ask', AskQuestion)
-router.get('/get', getAllQuestions)
-router.delete('/delete/:id', deleteQuestion);
-
-export default router
+module.exports = app;

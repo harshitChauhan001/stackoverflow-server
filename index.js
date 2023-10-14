@@ -1,10 +1,9 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-
-import userRoutes from "./routes/users.js";
-import questionRoutes from "./routes/Questions.js";
-import answerRoute from "./routes/Answers.js";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const userRoutes = require("./routes/users.js");
+const questionRoutes = require("./routes/Questions.js");
+const answerRoute = require("./routes/Answers.js");
 
 const app = express();
 
@@ -28,7 +27,7 @@ mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     app.listen(3000, () => {
-      console.log(`server is running on ${PORT}`);
+      console.log(`server is running on 3000`);
     })
   )
   .catch((err) => console.log(err.message));

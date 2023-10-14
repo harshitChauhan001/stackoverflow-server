@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import Questions from "../models/Questions.js";
+const mongoose = require("mongoose");
+const Questions = require("../models/Questions.js");
 
-export const postAnswer = async (req, res) => {
+const postAnswer = async (req, res) => {
   const { id: _id } = req.params;
   const { noOfAnswers, answerBody, userAnswered, userId } = req.body;
 
@@ -25,13 +25,12 @@ const updateNoOfQuestions = async (_id, noOfAnswers) => {
       $set: { noOfAnswers: noOfAnswers },
     });
   } catch (error) {
-      console.log(error);
-      res.status(400).json(error);
-
+    console.log(error);
+    res.status(400).json(error);
   }
 };
 
-export const deleteAnswer = async (req, res) => {
+const deleteAnswer = async (req, res) => {
   const { id: _id } = req.params;
   const { answerId, noOfAnswers } = req.body;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -50,4 +49,9 @@ export const deleteAnswer = async (req, res) => {
   } catch (error) {
     res.status(405).json(error);
   }
+};
+
+module.exports = {
+  deleteAnswer,
+  postAnswer,
 };

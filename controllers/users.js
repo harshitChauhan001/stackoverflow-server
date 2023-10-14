@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import User from "../models/auth.js";
+const mongoose = require("mongoose");
+const User = require("../models/auth.js");
 
-export const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
     const allUsers = await User.find();
     const allUserDetails = [];
@@ -19,3 +19,5 @@ export const getAllUsers = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+module.exports = getAllUsers;

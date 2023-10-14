@@ -1,7 +1,7 @@
-import Questions from "../models/Questions.js";
-import mongoose from "mongoose";
+const Questions = require("../models/Questions.js");
+const mongoose = require("mongoose");
 
-export const AskQuestion = async (req, res) => {
+const AskQuestion = async (req, res) => {
   const postQuestionData = req.body;
   const postQuestion = await new Questions(postQuestionData);
   console.log(postQuestionData);
@@ -14,7 +14,7 @@ export const AskQuestion = async (req, res) => {
   }
 };
 
-export const getAllQuestions = async (req, res) => {
+const getAllQuestions = async (req, res) => {
   try {
     const questionList = await Questions.find();
     return res.status(200).json(questionList);
@@ -23,7 +23,7 @@ export const getAllQuestions = async (req, res) => {
   }
 };
 
-export const deleteQuestion = async (req, res) => {
+const deleteQuestion = async (req, res) => {
   const { id: _id } = req.params;
   //parameter available in the url
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -43,3 +43,8 @@ export const deleteQuestion = async (req, res) => {
 
 // asdfljadf
 // Object("adflkjadflkjaf")
+module.exports = {
+  deleteQuestion,
+  getAllQuestions,
+  AskQuestion,
+};

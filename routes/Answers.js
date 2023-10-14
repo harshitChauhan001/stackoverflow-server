@@ -1,9 +1,9 @@
-import express from "express";
-
-import { postAnswer,deleteAnswer } from '../controllers/Answers.js'
+const express = require("express");
+const { postAnswer, deleteAnswer } = require("../controllers/Answers.js");
 
 const router = express.Router();
 
-router.patch('/post/:id', postAnswer)
-router.patch('/delete/:id',deleteAnswer)
-export default router
+router.patch("/post/:id", postAnswer);
+router.patch("/delete/:id", deleteAnswer);
+
+module.exports = router;
