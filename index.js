@@ -13,14 +13,13 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
 
-app.use("/user", userRoutes);
-app.use("/questions", questionRoutes);
-app.use("/answer", answerRoute);
-
 app.get("/", (req, res) => {
   return res.send("This is Stack overflow clone API");
 });
 
+app.use("/user", userRoutes);
+app.use("/questions", questionRoutes);
+app.use("/answer", answerRoute);
 
 const CONNECTION_URL =
   "mongodb+srv://admin:admin@cluster0.35kafiw.mongodb.net/?retryWrites=true&w=majority";
