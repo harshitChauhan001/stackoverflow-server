@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
   return res.send("This is Stack overflow clone API");
 });
 
-const PORT = process.env.PORT || 5000;
 
 const CONNECTION_URL =
   "mongodb+srv://admin:admin@cluster0.35kafiw.mongodb.net/?retryWrites=true&w=majority";
@@ -29,7 +28,7 @@ const CONNECTION_URL =
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
-    app.listen(PORT, () => {
+    app.listen(3000, () => {
       console.log(`server is running on ${PORT}`);
     })
   )
